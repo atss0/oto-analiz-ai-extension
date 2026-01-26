@@ -1,0 +1,31 @@
+# --- İşletim Sistemi Dosyaları (Çöp) ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- VS Code ve Editör Ayarları ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Güvenlik ve Ayarlar (ÇOK ÖNEMLİ) ---
+.env
+.env.local
+config.js
+secrets.json
+
+# --- Log Dosyaları ---
+*.log
+npm-debug.log*
+
+# --- Node.js / Bağımlılıklar (Eğer varsa) ---
+node_modules/
+dist/
+build/
+
+# --- Chrome Extension Gereksizleri ---
+*.pem
+*.crx
+*.zip
+_metadata/

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Oto Analiz AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 320px;
+      height: 250px;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1 { font-size: 20px; color: #1a202c; margin-bottom: 5px; }
+    p.subtitle { font-size: 12px; color: #718096; margin-bottom: 25px; }
+    
+    #btnScrape {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #FFD000 0%, #F59E0B 100%);
+      border: none;
+      border-radius: 10px;
+      color: #1a202c;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
+      transition: transform 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    #btnScrape:hover { transform: translateY(-2px); }
+    #status { margin-top: 10px; font-size: 11px; color: #e53e3e; text-align: center; height: 15px; }
+    
+    .footer {
+      position: absolute; bottom: 10px; width: 100%; text-align: center;
+      font-size: 10px; color: #a0aec0;
+    }
+    .footer span { color: #718096; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Oto Analiz AI</h1>
+  <p class="subtitle">Yapay Zeka Ekspertizi</p>
+  
+  <button id="btnScrape"><span>Analizi Başlat</span> 🚀</button>
+  <div id="status"></div>
+
+  <div class="footer">Coded by <span>ats</span> | HNG Software</div>
+  <script src="popup.js"></script>
+</body>
+</html>
