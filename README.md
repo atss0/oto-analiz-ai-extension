@@ -1,30 +1,49 @@
-# Sahibinden Oto Analiz AI
+# Sahibinden AI Analiz
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
 ![Tech](https://img.shields.io/badge/AI-GPT_4o-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Chrome_Extension-orange.svg)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-Available-4285F4?logo=google-chrome&logoColor=white)](https://chromewebstore.google.com/detail/njfhlhpflbdfhljkhflkmkjlhgnanlpj?utm_source=item-share-cb)
 
-**sahibinden.com** üzerindeki araç ilanlarını yapay zeka ile analiz eden, ekspertiz raporlarını okuyan ve fiyat/performans değerlendirmesi yapan gelişmiş bir Chrome Eklentisi.
+**sahibinden.com** üzerindeki **Vasıta (Araç)** ve **Emlak (Konut/İş Yeri)** ilanlarını yapay zeka ile analiz eden, ekspertiz raporlarını yorumlayan ve yatırım tavsiyesi sunan gelişmiş bir Chrome Eklentisi.
 
-Bu proje; ilanın başlığını, fiyatını, açıklamasını, donanım listesini ve ilan fotoğraflarını tarayarak **GPT-4o Vision** modeline gönderir ve detaylı bir alım tavsiyesi sunar.
+Bu proje; ilanın kategorisini (Oto/Emlak) ve tipini (Satılık/Kiralık) otomatik algılar. İlanın fiyatını, açıklamasını, teknik özelliklerini ve fotoğraflarını **GPT-4o Vision** modeline göndererek size detaylı bir **Eksper Raporu** sunar.
 
 <p align="center">
   <img src="assets/screenshots/ss-2.png" width="45%" title="Sinematik Loading Ekranı">
   &nbsp; &nbsp; <img src="assets/screenshots/ss-1.png" width="45%" title="AI Analiz Sonucu">
 </p>
 
+## Yeni Özellikler (v1.1)
+
+* **Emlak Modu:** Artık sadece arabaları değil; satılık/kiralık daireleri, ofisleri ve arsaları da analiz ediyor.
+    * *Satılık:* Yatırım değeri, amortisman ve kredi uygunluğu analizi.
+    * *Kiralık:* Aidat, depozito, ısınma ve eşya durumu analizi.
+* **Hibrit Mimari:** İlanın otomobil mi yoksa ev mi olduğunu otomatik anlar ve ona göre özel bir AI promptu kullanır.
+* **Arka Plan Servisi (Background Worker):** Analiz sırasında başka sekmeye geçseniz veya pencereyi kapatsanız bile işlem arka planda devam eder. Asla yarıda kalmaz.
+* **Fotoğraf Analizi:**
+    * *Araçlarda:* Kaporta, kozmetik, döşeme yıpranması.
+    * *Evlerde:* Rutubet, güneş alma durumu, tadilat ihtiyacı.
+
 ## Özellikler
 
 * **Tam Sayfa Analiz:** İlan detay sayfasındaki tüm teknik verileri ve satıcı açıklamasını okur.
-* **AI Görsel Tarama:** GPT-4o Vision ile aracın fotoğraflarını analiz eder (Kozmetik kusurlar, döşeme durumu vb.).
-* **Gizli Özellik Tespiti:** Donanım listesindeki özellikleri kategorize eder (Güvenlik, Multimedya vb.).
-* **Ekspertiz Okuma:** "Boyalı/Değişen" tablosunu okur ve rapora işler.
+* **Gizli Özellik Tespiti:** Satıcının metin arasına gizlediği riskleri (örn: "ağır hasarlı", "tapusu yok", "rutubetli") yakalar.
+* **Ekspertiz Entegrasyonu:** Araç ilanlarında "Boyalı/Değişen" tablosunu okur.
 * **Sinematik UI:** Sayfa üzerinde modern, animasyonlu bir yükleme ekranı ve sonuç penceresi (Modal) açar.
-* **backend-less Yapı:** n8n veya basit bir API endpoint ile entegre çalışır.
+* **Backend-less Yapı:** n8n veya basit bir API endpoint ile entegre çalışır.
 
 ## Kurulum
 
-Bu eklenti henüz marketlerde yayınlanmamıştır. **Geliştirici Modu (Developer Mode)** ile tüm Chromium tabanlı tarayıcılara (Chrome, Edge, Opera, Brave) yükleyebilirsiniz.
+### Chrome Web Mağazasından Yükle (Önerilen)
+Eklentimiz artık resmi olarak yayında! En güncel ve stabil sürümü doğrudan mağazadan güvenle yükleyebilirsiniz:
+
+[<img src="https://img.shields.io/badge/Chrome_Web_Store-Available-4285F4?logo=google-chrome&logoColor=white" width="200" alt="Chrome Web Mağazasında Mevcut">](https://chromewebstore.google.com/detail/njfhlhpflbdfhljkhflkmkjlhgnanlpj?utm_source=item-share-cb)
+
+**[Sahibinden AI Analiz - Mağaza Linki](https://chromewebstore.google.com/detail/njfhlhpflbdfhljkhflkmkjlhgnanlpj?utm_source=item-share-cb)**
+
+### Manuel Kurulum (Geliştirici Sürümü)
+Eğer kaynak kodları incelemek veya geliştirmeye katkıda bulunmak isterseniz:
 
 1.  Bu repoyu bilgisayarınıza indirin (Clone veya Download ZIP).
 2.  Kullandığınız tarayıcıyı açın ve adres çubuğuna ilgili uzantı adresini yazın:
@@ -36,27 +55,22 @@ Bu eklenti henüz marketlerde yayınlanmamıştır. **Geliştirici Modu (Develop
 
 ## Yapılandırma (Önemli)
 
-Eklentinin çalışması için bir Backend servisine (OpenAI ile iletişim kuracak bir köprüye) ihtiyacı vardır.
+Eklentinin çalışması için n8n üzerinde kurulan bir workflow'a ihtiyacı vardır. (Mağazadan indiren kullanıcılar için backend tarafımızca sağlanmaktadır, geliştiriciler kendi endpoint'lerini kullanabilir).
 
-1.  `popup.js` dosyasını açın.
-2.  Aşağıdaki satırı bulun ve kendi n8n webhook veya API adresinizle değiştirin:
+**Geliştiriciler için:**
+1.  `background.js` dosyasını açın.
+2.  Aşağıdaki satırı bulun ve kendi n8n webhook adresinizle değiştirin:
     ```javascript
     const n8nUrl = "YOUR_N8N_WEBHOOK_URL_HERE";
     ```
-    *(Eğer n8n kullanıyorsanız, HTTP Request node'u ile GPT-4o bağlantısı kurmanız gerekir.)*
-
-## Kullanılan Teknolojiler
-
-* **Frontend:** HTML5, CSS3, Vanilla JavaScript (Manifest V3)
-* **Backend / Workflow:** n8n (Workflow Automation)
-* **AI Model:** OpenAI GPT-4o (Vision Capabilities)
+3.  **n8n Workflow Kurulumu:** Proje dosyasındaki `SahibindenAI.json` dosyasını n8n'e import edin.
 
 ## Nasıl Çalışır?
 
-1.  sahibinden.com'da bir araba ilanına girin.
+1.  sahibinden.com'da bir ilana girin (Araba veya Ev fark etmez).
 2.  Eklenti ikonuna tıklayın ve **"Analizi Başlat"** butonuna basın.
-3.  Sayfa üzerinde bir yükleme ekranı belirir ve veriler toplanır.
-4.  Yapay zeka analizi bitince sonuçlar detaylı bir pencerede (Modal) gösterilir.
+3.  Sayfa üzerinde bir yükleme ekranı belirir. Siz başka işlerinizle ilgilenirken AI arka planda çalışır.
+4.  Analiz bittiğinde sonuçlar detaylı bir pencerede (Modal) gösterilir.
 
 ## Lisans
 

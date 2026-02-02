@@ -1,13 +1,29 @@
 {
   "manifest_version": 3,
-  "name": "Oto Analiz AI",
-  "version": "1.0",
-  "permissions": ["activeTab", "scripting"],
+  "name": "Sahibinden AI Analiz",
+  "version": "1.1",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "icons": {
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "İlanı Analiz Et"
+    "default_title": "İlanı Analiz Et",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/icon.png"
+    }
   },
   "host_permissions": [
-    "https://www.sahibinden.com/*"
-  ]
+    "https://*.sahibinden.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }

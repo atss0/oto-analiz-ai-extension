@@ -1,8 +1,8 @@
-# Privacy Policy for Oto Analiz AI
+# Privacy Policy for Sahibinden AI Analiz
 
 **Last Updated:** January 2026
 
-Oto Analiz AI ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how our Chrome Extension handles data.
+Sahibinden AI Analiz ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how our Chrome Extension handles data.
 
 **1. Data Collection**
 We do not collect, store, or share any personal identification information (PII) from users.
