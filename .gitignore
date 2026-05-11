@@ -29,3 +29,9 @@ build/
 *.crx
 *.zip
 _metadata/
+
+# --- Markdown Dosyaları ---
+*.md
+!README.md
+
+.claude
